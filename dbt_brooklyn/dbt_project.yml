@@ -33,6 +33,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   dbt_brooklyn:
-    # Config indicated by + and applies to all files under models/example/
-    example:
+    staging:      
       +materialized: view
+      +schema: "{{ env_var('SCHEMA_SILVER') }}"
+    mart:      
+      +materialized: table
+      +schema: "{{ env_var('SCHEMA_GOLD') }}"  
+
+  dbt_artifacts:
+    +schema: artifacts
+    
