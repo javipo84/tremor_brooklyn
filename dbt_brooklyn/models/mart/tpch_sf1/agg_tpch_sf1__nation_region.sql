@@ -4,34 +4,37 @@ WITH stg_tpch_sf1_customers AS (
         C_NATIONKEY
     FROM {{ ref ('stg_tpch_sf1__customer') }}
 ),
-WITH stg_tpch_sf1_lineitem AS (
+stg_tpch_sf1_lineitem AS (
     SELECT 
         L_ORDERKEY,
         L_PARTKEY,
+        L_SHIPMODE,
         L_SHIPDATE
     FROM {{ ref ('stg_tpch_sf1__lineitem') }}
 ),
-WITH stg_tpch_sf1_nation AS (
+stg_tpch_sf1_nation AS (
     SELECT 
         N_NATIONKEY,
+        N_REGIONKEY,
         N_NAME
     FROM {{ ref ('stg_tpch_sf1__nation') }}
 ),
-WITH stg_tpch_sf1_region AS (
+stg_tpch_sf1_region AS (
     SELECT 
         R_REGIONKEY,
         R_NAME
     FROM {{ ref ('stg_tpch_sf1__region') }}
 ),
-WITH stg_tpch_sf1_orders AS (
+stg_tpch_sf1_orders AS (
     SELECT 
         O_ORDERKEY,
         O_CUSTKEY,
         O_ORDERDATE
     FROM {{ ref ('stg_tpch_sf1__orders') }}
 ),
-agr_nationality as (
+agr_region_nation as (
     SELECT 
+        REG.R_NAME AS REGION,
         NAT.N_NAME AS NATION,
         COUNT(DISTINCT CUS.C_CUSTKEY) AS NUM_CUSTOMERS
     FROM
@@ -41,7 +44,8 @@ agr_nationality as (
         INNER JOIN stg_tpch_sf1_orders ORD ON CUS.C_CUSTKEY = ORD.O_CUSTKEY
         INNER JOIN stg_tpch_sf1_lineitem LIN ON LIN.L_ORDERKEY = ORD.O_ORDERKEY
     GROUP BY 
-        NAT.N_NAME;
+        REG.R_NAME,
+        NAT.N_NAME
 )
 
-SELECT * FROM agr_nationality
+SELECT * FROM agr_region_nation
