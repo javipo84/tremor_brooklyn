@@ -36,7 +36,7 @@ models:
     staging:      
       +materialized: view
       +schema: "{{ env_var('SCHEMA_SILVER') }}"
-    mart:      
+    marts:      
       +materialized: table
       +schema: "{{ env_var('SCHEMA_GOLD') }}"  
 
