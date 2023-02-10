@@ -2,37 +2,24 @@ dbt_brooklyn:
   target: dev
   outputs:
     dev:
-      account: civicapartner.west-europe.azure
-      database: TREMOR_BROOKLYN_DB
-      authenticator: externalbrowser      
-      role: AVANZADO
-      schema: silver
+      account: "{{ env_var('SERVER') }}"
+      database: "{{ env_var('DATABASE') }}"      
+      role: "{{ env_var('ROLE') }}" 
+      schema: "{{ env_var('SCHEMA_DEFAULT') }}" 
       threads: 4
       type: snowflake
-      user: javier.parra@civica-soft.com
-      warehouse: WH_BASICO          
+      user: "{{ env_var('USER') }}"  
+      password: "{{ env_var('PASSWORD') }}"  
+      warehouse: "{{ env_var('WAREHOUSE') }}"  
 
     pro:
-      account: civicapartner.west-europe.azure
-      database: TREMOR_BROOKLYN_DB
-      authenticator: externalbrowser      
-      role: AVANZADO
-      schema: silver
+      account: "{{ env_var('SERVER') }}"
+      database: "{{ env_var('DATABASE') }}"      
+      role: "{{ env_var('ROLE') }}" 
+      schema: "{{ env_var('SCHEMA_DEFAULT') }}" 
       threads: 4
       type: snowflake
-      user: javier.parra@civica-soft.com
-      warehouse: WH_BASICO          
-
-elementary:
-  target: dev
-  outputs:
-    dev:
-      account: civicapartner.west-europe.azure
-      database: DBT_JPARRA
-      authenticator: externalbrowser      
-      role: AVANZADO
-      schema: elementary
-      threads: 4
-      type: snowflake
-      user: javier.parra@civica-soft.com
-      warehouse: WH_BASICO   
+      user: "{{ env_var('USER') }}"  
+      password: "{{ env_var('PASSWORD') }}"  
+      warehouse: "{{ env_var('WAREHOUSE') }}"     
+    
