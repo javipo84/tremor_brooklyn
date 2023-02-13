@@ -42,6 +42,9 @@ models:
 
   dbt_artifacts:
     +schema: artifacts
+
+  elementary:
+    +schema: 'elementary'    
     
 on-run-end: 
   "{{ dbt_artifacts.upload_results(results) }}"

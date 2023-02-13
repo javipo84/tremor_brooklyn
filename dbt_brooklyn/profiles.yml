@@ -23,3 +23,15 @@ dbt_brooklyn:
       password: "{{ env_var('PASSWORD') }}"  
       warehouse: "{{ env_var('WAREHOUSE') }}"     
     
+elementary:
+  outputs:
+    default:
+      type: snowflake
+      account: "{{ env_var('SERVER') }}"
+      user: "{{ env_var('USER') }}" 
+      password: "{{ env_var('PASSWORD') }}" 
+      role: "{{ env_var('ROLE') }}" 
+      warehouse: "{{ env_var('WAREHOUSE') }}"
+      database: "{{ env_var('DATABASE') }}"
+      schema: elementary
+      threads: 4    
