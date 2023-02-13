@@ -11,6 +11,9 @@ sources:
         columns:
           - name: c_custkey
             description: ""
+            tests:
+              - not_null 
+              - unique
           - name: c_name
             description: ""
           - name: c_address
@@ -31,8 +34,13 @@ sources:
         columns:
           - name: o_orderkey
             description: ""
+            tests:
+              - not_null 
+              - unique
           - name: o_custkey
             description: ""
+            tests:
+              - not_null 
           - name: o_orderstatus
             description: ""
           - name: o_totalprice
@@ -53,6 +61,9 @@ sources:
         columns:
           - name: n_nationkey
             description: ""
+            tests:
+              - not_null 
+              - unique
           - name: n_name
             description: ""
           - name: n_regionkey
@@ -65,12 +76,21 @@ sources:
         columns:
           - name: l_orderkey
             description: ""
+            tests:
+              - not_null 
           - name: l_partkey
             description: ""
+            tests:
+              - not_null 
           - name: l_suppkey
             description: ""
+            tests:
+              - not_null 
           - name: l_linenumber
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['1','2','3','4','5','6','7']
           - name: l_quantity
             description: ""
           - name: l_extendedprice
@@ -93,6 +113,9 @@ sources:
             description: ""
           - name: l_shipmode
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['TRUCK','AIR','RAIL','SHIP','MAIL','FOB','REG AIR']
           - name: l_comment
             description: ""
 
@@ -101,8 +124,14 @@ sources:
         columns:
           - name: r_regionkey
             description: ""
+            tests:
+              - not_null 
+              - unique
           - name: r_name
             description: ""
+            tests:
+              - accepted_values:
+                  values: ['AFRICA','AMERICA','ASIA','EUROPE','MIDDLE EAST']
           - name: r_comment
             description: ""          
 		      
