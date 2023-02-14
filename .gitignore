@@ -1,3 +1,11 @@
 logs/
+.DS_Store
+.idea
+.npmrc
+.vscode
+coverage
+dist
+node_modules
+jsdoc
 .vscode/
 get-pip.py
