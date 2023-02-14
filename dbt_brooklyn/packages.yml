@@ -1,0 +1,10 @@
+packages:
+   
+  - package: dbt-labs/codegen
+    version: 0.9.0
+
+  - package: brooklyn-data/dbt_artifacts
+    version: 2.2.2    
+
+  - package: elementary-data/elementary
+    version: 0.6.13  
